@@ -105,29 +105,29 @@ public class AuthConfig {
 
 		httpSecurity.csrf(Customizer.withDefaults())
                     .authorizeHttpRequests(request -> request
-						.requestMatchers("/admin/**")
-						.hasRole("ADMIN")
-						.requestMatchers("/user/**")
-						.hasAnyRole("USER", "ADMIN")
-						.requestMatchers("/**")
-						.permitAll()
-						.anyRequest()
-						.authenticated())
-						.formLogin(form -> form
-						.loginPage("/login")
-						.loginProcessingUrl("/login")
-						.usernameParameter("email")
-						.passwordParameter("password")
-						.defaultSuccessUrl("/")
-						.permitAll())
+			.requestMatchers("/admin/**")
+			.hasRole("ADMIN")
+			.requestMatchers("/user/**")
+			.hasAnyRole("USER", "ADMIN")
+			.requestMatchers("/**")
+			.permitAll()
+			.anyRequest()
+			.authenticated())
+			.formLogin(form -> form
+			.loginPage("/login")
+			.loginProcessingUrl("/login")
+			.usernameParameter("email")
+			.passwordParameter("password")
+			.defaultSuccessUrl("/")
+			.permitAll())
                     .oauth2Login(form -> form
-						.loginPage("/login")
-						.defaultSuccessUrl("/login/facebook")        // we can create the custom controller for that URL
-						.failureHandler(new SimpleUrlAuthenticationFailureHandler()))
+			.loginPage("/login")
+			.defaultSuccessUrl("/login/facebook")        // we can create the custom controller for that URL
+			.failureHandler(new SimpleUrlAuthenticationFailureHandler()))
                     .logout(logout -> logout
-						.logoutSuccessUrl("/login?logout")
-						.permitAll()
-				);
+			.logoutSuccessUrl("/login?logout")
+			.permitAll()
+                     );
 	
 		return httpSecurity.build();
 	}
