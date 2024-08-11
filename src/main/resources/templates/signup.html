@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+</head>
+<body>
+    <h2>Signup</h2>
+    <form th:action="@{/signup}" method="post">
+		Name : <input type="text" name="name" th:field="${user.name}" required><br><br>
+        Date of Birth: <input type="date" name="dob" th:field="${user.dob}" required/><br><br>
+        Email : <input type="email" name="email" th:field="${user.email}" required><br><br>
+        Password: <input type="password" name="password" th:field="${user.password}" required/><br><br>
+        Confirm Password: <input type="password" name="confirmPassword" th:field="${user.confirmPassword}" required/><br><br>
+
+        <!-- <input type="checkbox" name="remberme" id="RememberMe"> <label for="RememberMe">Remember Me</label> <br><br> -->
+
+        <input type="submit" value="Signup">
+    </form>
+</body>
+</html>
